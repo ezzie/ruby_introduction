@@ -1,0 +1,35 @@
+Pre requisite
+1. Ensure access to your email
+2. Create a new account on http://github.com and http://www.heroku.com/
+
+Cleanup
+1. IF already installed - Remove aptana, ruby, rails, mysisgit from from Windows. 
+2. Clean .ssh folder from C:/Users/<user_name> directory. Move existing files to new backup folder.
+
+Install Supporting applications
+1. Install notepad++ - run installer
+2. Install 7-zip - run installer
+3. Install XAMPP - unzip the given zip file in C:/
+4. Configure XAMPP - Run setup_xampp.bat in command prompt. This file is in (C:/xampp)
+
+Rails Enviornment Setup
+1. Install Java - run installer
+2. Install ruby, rails, git, sqlite, devkit using - 
+	2.1 Download rail installer from http://railsinstaller.org/
+	2.2 Run Setup wizard
+	2.3 Configure GIT by giving your user and email. It will be prompted during installation.
+	2.4 At the end it will create public/private key pair.
+	2.5 Add a new public key to your github account
+2. Verify GIT
+	2.1 Open 'Git Bash' by clicking Start > All Programs > RailsInstaller > Git Bash
+	2.2 Test connectivity to git by typing - ssh -T git@github.com
+	2.3 Accept request to add remote host by typing yes
+	2.4 You will get following message - "Hi username! You've successfully authenticated, but GitHub does not provide shell access."
+3. Changes in Ruby installation
+	3.1 Open all batch files in C:\RailsInstaller\Ruby1.9.3\bin usinf notepad++
+	3.2 Change the path of ruby.exe and other installable to correct one e.g. C:\RailsInstaller\Ruby1.9.3\bin
+4. Aptana Setup
+	4.1 Install Aptana (change install folder to "C:/Aptana3")
+	4.2 Run Aptana
+	4.3 In "Select A Workspace" dialog, create new workspace "C:/Aptana3/workspace"
+	

@@ -1,0 +1,58 @@
+git config -l
+git config --unset --global user.email
+git config --global user.name "My Name"
+edit .gitignore file
+
+git status
+git init
+git status
+
+#Concept of untracked files
+
+git add README.rdoc
+git status
+
+#Concept of staging area
+
+git add .
+git status
+git commit -m"Firts commit"
+git status
+
+#Concept of 'master' branch and 'HEAD'
+
+git log
+
+##Why git
+#Delete some folder e.g. app/controller
+
+git checkout -f
+git status
+
+#modify readme file
+git checkout README.rdoc
+git status
+
+##Interaction with Github
+
+#Create new repository name intro_app at github
+git remote add origin git@github.com:ezzie/intro_app.git
+git remote -v
+git push -u origin master
+
+#working with branches
+git checkout -b modify-README
+git status
+Change README file
+git status
+git add .
+git commit -m"Modified Readme"
+git status
+
+#Merging
+git checkout master
+git merge modify-README
+git branch -d modify-README
+
+#push
+git push
