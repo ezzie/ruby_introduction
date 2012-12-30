@@ -1,3 +1,4 @@
+# All class variables should be given initial value when it is declared
 class Employee
   attr_accessor :name, :employee_no
   @@count = 0 #class variable
