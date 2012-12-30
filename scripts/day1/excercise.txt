@@ -1,0 +1,35 @@
+excercise - 
+Perform some random changes in file and commit code couple of times
+
+git diff HEAD HEAD^
+git diff # show changes with staging vs working
+git diff --staged # show changes with stages and commit
+
+git rm mistake.html
+git mv change_me.html changed.html
+
+git log -p -2
+git log --since=2.weeks
+git log --stat
+git log --pretty=oneline
+git log --pretty=format:"%h - %an,  %ar : %s"
+git log --pretty=format:"%h %s"  --graph 
+
+git tag # list tags
+git tag v1.4-lw # create light weight tag
+git tag -a v1.4 -m 'my version 1.4' # create annotated tags
+git tag -s v1.5 -m 'my signed 1.5 tag' # create signned tag
+git tag -m "Tag version 1.0" V1.0 3ede462 # tag particlular commit
+git show v1.4 # view tag data
+git push origin v1.5 # sharing a tag
+git push origin --tags # share multiple tags
+
+git show
+git show HEAD^^
+git show HEAD~3
+
+git branch
+git branch iss53 # create new branch
+git checkout iss53 # checkout existing branch
+git checkout -b iss53 # shorthand for above two branches
+git branch -D topic-branch

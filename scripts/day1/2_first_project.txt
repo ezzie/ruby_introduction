@@ -1,0 +1,6 @@
+1. Open Aptana and Create new Project
+2. Select "Rails Project" type
+3. Give project name as - intro_app
+	3.1 Explain other option of cloning of existing project
+4. Hit finish and wait 'run bundle install' command to finish
+5. Run server

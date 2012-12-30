@@ -1,0 +1,119 @@
+$ rails new .
+       exist
+      create  README.rdoc
+      create  Rakefile = Similar to make in c and Ant in Java
+      create  config.ru - Rackup file - Explain RACK based servers
+      create  .gitignore - specify files you want to ignore for git
+      create  Gemfile - Ruby Gems is package manager for ruby. Standard format for distributing ruby programs and libraries (gem list, install, uninstall etc.)
+      create  app
+      create  app/assets/images/rails.png - image files 
+      create  app/assets/javascripts/application.js - js files
+      create  app/assets/stylesheets/application.css - css files
+      create  app/controllers/application_controller.rb - business logic
+      create  app/helpers/application_helper.rb - helpers to be used across
+      create  app/mailers
+      create  app/models - data model
+      create  app/views/layouts/application.html.erb - UI files
+      create  app/mailers/.gitkeep
+      create  app/models/.gitkeep
+      create  config
+      create  config/routes.rb - url mapping
+      create  config/application.rb - application level configuration
+      create  config/environment.rb
+      create  config/environments - enviornment specific configuration, three enviornments
+      create  config/environments/development.rb
+      create  config/environments/production.rb
+      create  config/environments/test.rb
+      create  config/initializers
+      create  config/initializers/backtrace_silencers.rb - filters and silence logs for libraries
+      create  config/initializers/inflections.rb - pluralization
+      create  config/initializers/mime_types.rb - format of response
+      create  config/initializers/secret_token.rb - for signed cookies
+      create  config/initializers/session_store.rb - how u want to maintain session
+      create  config/initializers/wrap_parameters.rb - parameter wrapping for JSON
+      create  config/locales
+      create  config/locales/en.yml - localization files
+      create  config/boot.rb - run during setup. Used to setup gems from Gemfile
+      create  config/database.yml - db configuration
+      create  db
+      create  db/seeds.rb - file to load seed data - rake db:seed
+      create  doc
+      create  doc/README_FOR_APP
+      create  lib
+      create  lib/tasks - used for rake tasks
+      create  lib/tasks/.gitkeep
+      create  lib/assets - libraries specific to your project
+      create  lib/assets/.gitkeep
+      create  log - logs are generated here
+      create  log/.gitkeep
+      create  public - static files
+      create  public/404.html
+      create  public/422.html
+      create  public/500.html
+      create  public/favicon.ico
+      create  public/index.html
+      create  public/robots.txt - for robots
+      create  script - any custom scripts in ruby
+      create  script/rails
+      create  test/fixtures - setup and tear down
+      create  test/fixtures/.gitkeep
+      create  test/functional - test whole functionalty. real case scenarios. Comparing the results for a given input against the specification.
+      create  test/functional/.gitkeep
+      create  test/integration - test without mocking e.g. db, file system
+      create  test/integration/.gitkeep
+      create  test/unit - typically method tests and use mocking (no db, file system or network invoved)
+      create  test/unit/.gitkeep
+      create  test/performance/browsing_test.rb - tests designed to test lead
+      create  test/test_helper.rb - common code across test cases
+      create  tmp/cache
+      create  tmp/cache/assets
+      create  vendor/assets/javascripts
+      create  vendor/assets/javascripts/.gitkeep - e.g. JQuery
+      create  vendor/assets/stylesheets
+      create  vendor/assets/stylesheets/.gitkeep - e.g 960.gs
+      create  vendor/plugins
+      create  vendor/plugins/.gitkeep - extensions to rails. breadcrumb
+         run  bundle install
+Fetching source index for https://rubygems.org/
+Using rake (10.0.3)
+Using i18n (0.6.1)
+Using multi_json (1.5.0)
+Using activesupport (3.2.1)
+Using builder (3.0.4)
+Using activemodel (3.2.1)
+Using erubis (2.7.0)
+Using journey (1.0.4)
+Using rack (1.4.1)
+Using rack-cache (1.2)
+Using rack-test (0.6.2)
+Using hike (1.2.1)
+Using tilt (1.3.3)
+Using sprockets (2.1.3)
+Using actionpack (3.2.1)
+Using mime-types (1.19)
+Using polyglot (0.3.3)
+Using treetop (1.4.12)
+Using mail (2.4.4)
+Using actionmailer (3.2.1)
+Using arel (3.0.2)
+Using tzinfo (0.3.35)
+Using activerecord (3.2.1)
+Using activeresource (3.2.1)
+Using bundler (1.0.22)
+Using coffee-script-source (1.4.0)
+Using execjs (1.4.0)
+Using coffee-script (2.2.0)
+Using rack-ssl (1.3.2)
+Using json (1.7.5)
+Using rdoc (3.12)
+Using thor (0.14.6)
+Using railties (3.2.1)
+Using coffee-rails (3.2.2)
+Using jquery-rails (2.1.4)
+Using rails (3.2.1)
+Using sass (3.2.4)
+Using sass (3.2.4)
+Using sass-rails (3.2.5)
+Using sqlite3 (1.3.6)
+Using uglifier (1.3.0)
+Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.
