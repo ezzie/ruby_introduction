@@ -1,0 +1,8 @@
+1. Create account on heroku
+2. heroku login (might need to restart application)
+3. heroku create (create new application at heroku)
+4. git push heroku master (deploy application)
+5. Regenerate keys in case of issues
+6. heroku run:detached rake db:migrate
+7. heroku open
+8. Heroku logs
