@@ -1,0 +1,61 @@
+Project Setup
+0. Go to workspace folder of apptana using command line
+1. Create a new project from above command line - rails new training_app --skip-test-unit
+3. Create a new project from aptana with same name (training_app) and Aptana will detect it. Just Click on finish.
+4. cd training_app
+5. From outside Aptana replace .gitignore and refresh trainning_app in Aptana
+6. git init
+7. git add .
+8. git commit -m"Initial Commit"
+9. Create new project in github with same name
+10. git remote add origin git@github.com:ezzie/training_app.git
+11. git push -u origin master
+
+Initial Changes
+1. Create new branch - git checkout -b initial-changes
+2. Update README
+3. Update Gemfile as following
+
+# Gemfile
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.10'
+
+group :development, :test do
+  gem 'sqlite3', '1.3.5'
+  gem 'rspec-rails', '2.11.0'
+end
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '3.2.5'
+  gem 'coffee-rails', '3.2.2'
+  gem 'uglifier', '1.2.3'
+end
+
+gem 'jquery-rails', '2.0.2'
+
+group :test do
+  gem 'capybara', '1.1.2'
+end
+
+group :production do
+  gem 'pg', '0.12.2'
+end
+
+4. bundle update 
+5. bundle install
+6. rails generate rspec:install
+7. git add .
+8. git commit -m"Gemfile and README updated"
+9. git checkout master
+10. git merge initial-changes
+11. git push
+
+#Deployment on Heroku
+
+1. heroku login - and provide user name and password
+2. heroku create
+3. git push heroku master
+4. heroku open
