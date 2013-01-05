@@ -1,0 +1,9 @@
+http://dannytatom.me/metaid/
+https://www.google.co.in/search?q=attr_accessor+in+ruby+source&aq=f&oq=attr_accessor+in+ruby+source&aqs=chrome.0.57j0j62l3.8320&sugexp=chrome,mod=16&sourceid=chrome&ie=UTF-8
+ruby convention ( =, ?, !)
+aptana short cuts
+git documentations
+Object and Basic Object class and its methods
+eql? vs equal?
+exit
+hash size

@@ -7,55 +7,26 @@
 =end
 
 # Built in function that return arrays
-
-class MyClass
-    @@classvar = 1000
-    @instvar = 1000
-    
-    def MyClass.classMethod
-        if @instvar == nil then
-            @instvar = 10
-        else
-            @instvar += 10
-        end
-        
-        if @@classvar == nil then
-            @@classvar = 10
-        else
-            @@classvar += 10
-        end            
-    end
-    
-    def instanceMethod
-        if @instvar == nil then
-            @instvar = 1
-        else
-            @instvar += 1
-        end
-        
-        if @@classvar == nil then
-            @@classvar = 1
-        else
-            @@classvar += 1
-        end            
-    end
-    
-    def showVars
-        return "(instance method) @instvar = #{@instvar}, @@classvar = #{@@classvar}"
-    end
-    
-    def MyClass.showVars
-        return "(class method) @instvar = #{@instvar}, @@classvar = #{@@classvar}"
-    end
-    
-end
-
-puts( MyClass.showVars )
-puts( '--------------' )
-for i in 0..2 do  
-  ob = MyClass.new
-  MyClass.classMethod
-  ob.instanceMethod
-  puts( MyClass.showVars )
-  puts( ob.showVars )
-end
+# class MyArray < Array
+  # include Comparable
+  # def <=> ( anotherArray )
+    # str =  "first  #{self.length} second #{anotherArray.length}" 
+    # puts str
+    # p(self)
+    # self.length <=> anotherArray.length
+  # end
+# end
+# 
+# a1 = MyArray.new(2, "two")
+# a2 = MyArray.new(3, "three")
+# a3 = MyArray.new(4, "four")
+# a4 = MyArray.new(5, "four")
+# 
+# 
+# myBig = [a4, a1, a2, a1, a3]
+# p myBig
+# puts "rrrrrraaaajjjjaaannnn"
+# p myBig.sort
+require 'set'
+s1 = Set.new [1, 2]
+puts s1

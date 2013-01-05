@@ -94,6 +94,15 @@ class MyArray < Array
   end
 end
 
+a1 = MyArray.new(2, "two")
+a2 = MyArray.new(3, "three")
+a3 = MyArray.new(4, "four")
+
+myBig = [a1,a2, a3]
+puts myBig
+
+puts myBig.sort
+
 # Common used array methods - 
 # &, +, -, <<, clear, compact, compact!, delete(object), delete_at(index), flatten, flatten!, length, reverse, reverse!, sort, sort!
 

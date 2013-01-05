@@ -1,45 +1,3 @@
-# CLass method
-class SimpleClass
-   def MyClass.classMethod
-      puts( "This is a class method" )
-   end
-   def instanceMethod
-      puts( "This is an instance method" )
-   end
-end
-SimpleClass.classMethod
-
-# SHORT CUT SYNATX
-
-class MyClass
-   def MyClass.methodA
-      puts("a")   
-   end
-   
-    class << self
-      def methodB
-         puts("b")
-      end
-      
-      def methodC
-         puts("c")
-      end
-   end
-end
-
-# Other way
-class << MyClass
-   def methodD
-      puts( "d" )
-   end
-end
-
-puts( MyClass.singleton_methods.sort )
-MyClass.methodA
-MyClass.methodB
-MyClass.methodC
-MyClass.methodD
-
 # Singleton Class
 ob = Object.new
     # singleton class
@@ -75,6 +33,10 @@ def werewolf.howl
   end
 end
 
+def werewolf.creek
+  puts "creeking"
+end
+
 class << werewolf
     def crawl
         puts( "Crwaling" )
@@ -83,6 +45,7 @@ end
 
 werewolf.howl
 werewolf.crawl
+werewolf.creek
 #       You can try out these...
 # werewolf.talk
 # budgie.talk

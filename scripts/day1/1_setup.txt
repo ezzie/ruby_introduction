@@ -1,3 +1,7 @@
+References
+1. http://www.sapphiresteel.com/IMG/zip/book-of-ruby.zip
+2. http://ruby.railstutorial.org/ruby-on-rails-tutorial-book
+
 Pre requisite
 1. Ensure access to your email
 2. Create a new account on http://github.com and http://www.heroku.com/
