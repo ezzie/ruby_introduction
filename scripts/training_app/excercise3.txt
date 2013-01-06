@@ -1,0 +1,21 @@
+1. Look at source code of application.html.erb
+
+<%= stylesheet_link_tag "application", :media => "all" %>
+
+stylesheet_link_tag -> method with no parenthesis
+"application" is string passed as parameter
+:media => "all" -> hash passed as parameter with only one key element
+
+# Curly braces on final hash arguments are optional.
+
+2. Run rails console
+e1 = StaticPagesController.new
+x = e1.class
+puts( x )
+begin
+    x = x.superclass
+    puts(x.inspect) 
+end until x == nil
+
+require './example_user' # to load external files
+

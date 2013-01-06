@@ -1,0 +1,128 @@
+MAKING TITLE DYNAMIC and Refactoring
+0. Go to presentation slide 23
+1. Temporary rename views/layouts/application.html.erb file
+2. View home page
+3. Add following test case
+it "should have the right title" do
+  visit '/static_pages/home'
+  page.should have_selector('title',
+                    #:text => "Ruby on Rails Training App | Home")
+                    :text => "Home")
+end
+4. Understand above test case and change home.html.erb 
+<html>
+	<head>
+		<title>Ruby on Rails Training App | Home</title>
+	</head>
+	<body>
+		<h1>Home</h1>
+		<p>
+		  This is the home page for the
+		  <a href="http://github.com/ezzie">Ruby on Rails Training</a>
+		  by Ezzie Infosystems.
+		  We will be building a Training App in the class
+		</p>		
+	</body>
+</html>
+5. Rerun the test cases
+6. Change the static_pages_spec.rb to file in github
+7. Re run test cases - two test cases will fail
+8. Change  home.html.erb to
+<% provide(:title, 'Home') %>
+<html>
+	<head>
+		<title>Ruby on Rails Training App | <%= yield(:title) %></title>
+	</head>
+	<body>
+		<h1>Home</h1>
+		<p>
+		  This is the home page for the
+		  <a href="http://github.com/ezzie">Ruby on Rails Training</a>
+		  by Ezzie Infosystems.
+		  We will be building a Training App in the class
+		</p>		
+	</body>
+</html>
+9. Go to presentation slide 24
+
+Layouts
+1. rename application1.html.erb to application.html.erb and change its code to
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruby on Rails Training App | <%= yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
+2. Understand two yield methods
+3. Change code of home.html.erb
+<% provide(:title, 'Home') %>
+<h1>Home</h1>
+<p>
+  This is the home page for the
+  <a href="http://github.com/ezzie">Ruby on Rails Training</a>
+  by Ezzie Infosystems.
+  We will be building a Training App in the class
+</p>
+4. Add <% provide(:title, 'Home') %> to about and help pages
+6. Make it sure all tests are getting passes
+7. git add .
+8. git commit -m "Finish static pages"
+9. git checkout master
+10. git merge static-pages
+11. git push
+12. git push heroku
+
+EXTENDED CHANGES
+1. git checkout -b static-page-extend
+2. Repetitive code in test - do the following changes
+describe "Static pages" do
+  let(:base_title) { "Ruby on Rails Training App" }
+  describe "Home page" do
+     it "should have the title 'Home'" do
+      visit '/static_pages/home'
+      page.should have_selector('title', :text => "#{base_title} | Home")
+    end
+  end
+end
+3. Do above changes for all tests
+4. Define new method in ApplicationHelper - to handle empty title
+module ApplicationHelper
+  def full_title(page_title)
+    base_title = "Ruby on Rails Training App"
+    if page_title.empty?
+      base_title
+    else
+      "#{base_title} | #{page_title}"
+    end
+  end
+end
+5. Change title in application.html.erb
+<title><%= full_title(yield(:title)) %></title>
+6. Change the following test case
+it "should have the base title" do
+      visit '/static_pages/home'
+      page.should have_selector('title', :text => "#{base_title}")
+    end
+7. Add following new test case
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title', :text => "| Home")
+    end
+  end
+8. Remove line <% provide(:title, 'Home') %> from home.html.erb
+9. Do rest of changes
+10. git add .
+11. git commit -m"Refractored test cases and layout file"
+12. git checkout master
+13. git merge static-page-extend
+14. git push
+
+EXCERCISE - Add contact page - excercise 2

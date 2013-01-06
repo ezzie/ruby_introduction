@@ -9,4 +9,7 @@ end
     puts( i )
 }
 
+(1..5).each { |i| puts 2 * i }
+
 # Name less functions
+# Covention - curly braces only for short one-line blocks and the do..end syntax for longer one-liners and for multi-line blocks

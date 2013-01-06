@@ -1,0 +1,6 @@
+Add a static contact us page
+
+1. Write test case
+2. Change route.rb
+3. Add action in StaticPagesController
+4. Add about.html.erb file

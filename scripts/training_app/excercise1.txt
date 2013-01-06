@@ -1,0 +1,13 @@
+Undoing
+1 Controller
+rails generate controller FooBars baz quux
+rails destroy  controller FooBars baz quux
+
+2. Model
+rails generate model Foo bar:string baz:integer
+rails destroy model Foo
+
+3. Migration
+rake db:migrate
+rake db:rollback
+rake db:migrate VERSION=0 # Go back to begning
