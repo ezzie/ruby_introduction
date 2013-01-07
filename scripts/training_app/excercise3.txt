@@ -7,6 +7,7 @@ stylesheet_link_tag -> method with no parenthesis
 :media => "all" -> hash passed as parameter with only one key element
 
 # Curly braces on final hash arguments are optional.
+# new syntax flash = { success: "It worked!", error: "It failed." }
 
 2. Run rails console
 e1 = StaticPagesController.new

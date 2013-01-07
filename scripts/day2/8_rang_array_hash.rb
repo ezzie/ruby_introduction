@@ -126,6 +126,9 @@ h2 = {1=>'one', 2=>'two', 3=> 'three'}
 # Array and Hash has clone method
 
 # Never take assumption about order of hash
+# Curly braces on final hash arguments are optional.
+# new syntax 1.9
+flash = { success: "It worked!", error: "It failed." }
 
 h1.delete('loc2')
 p(h1.has_key?('loc2')) #=> false
@@ -141,3 +144,4 @@ s2 = Set.new( [1,1,2,3,4,4,5,1] )
 s3 = Set.new( [1,2,100] )
 s1.add( 1000 )
 s1.merge(s2)
+
