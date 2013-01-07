@@ -1,21 +1,22 @@
 Create controller for static content
 
 0. Close all ruby programs from task manager
-1. git checkout -b static-pages
+1. command - git checkout -b static-pages
 2. Html pages in public folder
 3. Generate static controller - rails generate controller StaticPages home help --no-test-framework
 4. Understand files generated
-5. rake routes - get "static_pages/home" - StaticPagesController.home
-6. rails s
-7. git add .
-8. git commit -m"Add a StaticPages controller"
-9. Go to presentation slide 22
-Excercise - Undoing things - excercise 1
+5. command - rake routes - get "static_pages/home" - StaticPagesController.home
+6. command - rails s
+7. command - git add .
+8. command - git commit -m"Add a StaticPages controller"
+9. Go to presentation slide 23
+
+************ EXCERCISE - Undoing things - ************************
 
 Behaviour Driven Development - First Test Case
 0. Integration tests, known as request specs in the context of RSpec, allow us to simulate the actions of a user interacting with our application using a web browser.
 1. Capybara provides natural-language syntax
-2. rails generate integration_test static_pages
+2. command - rails generate integration_test static_pages
 3. Understand and change generated code in static_pages_spec.rb (testing route)
 describe "StaticPages" do
   describe "GET /static_pages/home" do
@@ -25,15 +26,22 @@ describe "StaticPages" do
     end
   end
 end
-4. Run test case - bundle exec rspec spec/requests/static_pages_spec.rb
+4. command - bundle exec rspec spec/requests/static_pages_spec.rb
 5. Write another test case
 describe "Home page" do
-  it "should have the content 'Training App'" do
-    visit '/static_pages/home'
-    page.should have_content('Training App')
+  describe "GET /static_pages/home" do
+    it "should work" do
+      get static_pages_home_path
+      response.status.should be(200)
+    end
+    
+	it "should have the content 'Training App'" do
+		visit '/static_pages/home'
+		page.should have_content('Training App')
+	end
   end
 end
-6. visit is method and page is instance variable provided by capybara
+6. visit is method and page is instance variable provided by capybara. Run test case. They will fail.
 7. Change home.html.erb
 <h1>Training App</h1>
 <p>
@@ -41,16 +49,43 @@ end
   <a href="http://github.com/ezzie">Ruby on Rails Training</a>
   by Ezzie Infosystems.
 </p>
-8. bundle exec rspec spec/requests/static_pages_spec.rb
+8. command - bundle exec rspec spec/requests/static_pages_spec.rb - now they will pass
 9. Add new test case as below
-  describe "Help page" do
+describe "StaticPages" do
+  describe "GET /static_pages/home" do
+    it "should work" do
+      get static_pages_home_path
+      response.status.should be(200)
+    end
+
+    it "should have the content 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_content('Training App')
+    end
+    
+    it "should have the h1 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_selector('h1', :text => 'Training App')
+    end
+  end
+end
+
+************ EXCERCISE - Do above excercise for help ************************
+
+1. add test cases for help
+describe "GET /static_pages/help" do
     it "should have the content 'Help'" do
       visit '/static_pages/help'
       page.should have_content('Help')
     end
+    
+    it "should have the h1 'Help'" do
+      visit '/static_pages/help'
+      page.should have_selector('h1', :text => 'Help')
+    end
   end
-10. Run test that will fail - bundle exec rspec spec/requests/static_pages_spec.rb
-11. Update help.html.erb
+2. Run test that will fail - bundle exec rspec spec/requests/static_pages_spec.rb
+3. Update help.html.erb
 <h1>Help</h1>
 <p>
   Get help on the Ruby on Rails Training at the
@@ -81,3 +116,49 @@ end
   is provided by <a href="http://www.ezzie.in">Ezzie Infosystems</a> to teach web development
 </p>
 8. bundle exec rspec spec/requests/static_pages_spec.rb - Now all tests will be passes
+
+require 'spec_helper'
+
+describe "StaticPages" do
+  describe "GET /static_pages/home" do
+    it "should work" do
+      get static_pages_home_path
+      response.status.should be(200)
+    end
+
+    it "should have the content 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_content('Training App')
+    end
+    
+    it "should have the h1 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_selector('h1', :text => 'Training App')
+    end
+  end
+  
+  describe "GET /static_pages/help" do
+    it "should have the content 'Help'" do
+      visit '/static_pages/help'
+      page.should have_content('Help')
+    end
+    
+    it "should have the h1 'Help'" do
+      visit '/static_pages/help'
+      page.should have_selector('h1', :text => 'Help')
+    end
+  end
+  
+  describe "About page" do
+    it "should have the content 'About Us'" do
+      visit '/static_pages/about'
+      page.should have_content('About Us')
+    end
+    
+    it "should have the h1 'About Us'" do
+      visit '/static_pages/about'
+      page.should have_selector('h1', :text => 'About Us')
+    end
+  end
+
+end

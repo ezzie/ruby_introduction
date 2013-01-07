@@ -1,5 +1,5 @@
 MAKING TITLE DYNAMIC and Refactoring
-0. Go to presentation slide 23
+0. Go to presentation slide 24
 1. Temporary rename views/layouts/application.html.erb file
 2. View home page
 3. Add following test case
@@ -43,7 +43,7 @@ end
 		</p>		
 	</body>
 </html>
-9. Go to presentation slide 24
+9. Go to presentation slide 25
 
 Layouts
 1. rename application1.html.erb to application.html.erb and change its code to
@@ -64,21 +64,88 @@ Layouts
 2. Understand two yield methods
 3. Change code of home.html.erb
 <% provide(:title, 'Home') %>
-<h1>Home</h1>
+<h1>Training App</h1>
 <p>
   This is the home page for the
   <a href="http://github.com/ezzie">Ruby on Rails Training</a>
   by Ezzie Infosystems.
-  We will be building a Training App in the class
 </p>
-4. Add <% provide(:title, 'Home') %> to about and help pages
-6. Make it sure all tests are getting passes
-7. git add .
-8. git commit -m "Finish static pages"
-9. git checkout master
-10. git merge static-pages
-11. git push
-12. git push heroku
+6. Add test cases for title for help and about - the test will fail
+5. Add <% provide(:title, 'About Us') %> to about and help pages
+
+# rspec file
+require 'spec_helper'
+
+describe "StaticPages" do
+  describe "GET /static_pages/home" do
+    it "should work" do
+      get static_pages_home_path
+      response.status.should be(200)
+    end
+
+    it "should have the content 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_content('Training App')
+    end
+    
+    it "should have the h1 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_selector('h1', :text => 'Training App')
+    end
+    
+    it "should have the right title" do
+      visit '/static_pages/home'
+      page.should have_selector('title',
+                        #:text => "Ruby on Rails Training App | Home")
+                        :text => "Home")
+    end
+  end
+  
+  describe "GET /static_pages/help" do
+    it "should have the content 'Help'" do
+      visit '/static_pages/help'
+      page.should have_content('Help')
+    end
+    
+    it "should have the h1 'Help'" do
+      visit '/static_pages/help'
+      page.should have_selector('h1', :text => 'Help')
+    end
+    
+    it "should have the right title" do
+      visit '/static_pages/help'
+      page.should have_selector('title',
+                        :text => "Ruby on Rails Training App | Help")
+    end
+  end
+  
+  describe "About page" do
+    it "should have the content 'About Us'" do
+      visit '/static_pages/about'
+      page.should have_content('About Us')
+    end
+    
+    it "should have the h1 'About Us'" do
+      visit '/static_pages/about'
+      page.should have_selector('h1', :text => 'About Us')
+    end
+    
+    it "should have the right title" do
+      visit '/static_pages/about'
+      page.should have_selector('title',
+                        :text => "Ruby on Rails Training App | About")
+    end
+  end
+
+end
+
+Commit
+1. git add .
+2. git commit -m "Finish static pages"
+3. git checkout master
+4. git merge static-pages
+5. git push
+6. git push heroku
 
 EXTENDED CHANGES
 1. git checkout -b static-page-extend
@@ -106,7 +173,7 @@ module ApplicationHelper
 end
 5. Change title in application.html.erb
 <title><%= full_title(yield(:title)) %></title>
-6. Change the following test case
+6. Change the following test case on home page
 it "should have the base title" do
       visit '/static_pages/home'
       page.should have_selector('title', :text => "#{base_title}")
@@ -125,4 +192,96 @@ it "should have the base title" do
 13. git merge static-page-extend
 14. git push
 
-EXCERCISE - Add contact page - excercise 2
+************ EXCERCISE - Do above TFD for contact page ************************
+
+<% provide(:title, 'Contact') %>
+<h1>Contact</h1>
+<p>
+  Contact Ruby on Rails Tutorial about the sample app at the
+  <a href="http://railstutorial.org/contact">contact page</a>.
+</p>
+
+require 'spec_helper'
+
+describe "StaticPages" do
+  
+  let(:base_title) { "Ruby on Rails Training App" }
+  
+  describe "GET /static_pages/home" do
+    it "should work" do
+      get static_pages_home_path
+      response.status.should be(200)
+    end
+
+    it "should have the content 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_content('Training App')
+    end
+    
+    it "should have the h1 'Training App'" do
+      visit '/static_pages/home'
+      page.should have_selector('h1', :text => 'Training App')
+    end
+    
+    it "should have the base title" do
+      visit '/static_pages/home'
+      page.should have_selector('title', :text => "#{base_title}")
+    end
+    
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title', :text => "| Home")
+    end
+  end
+  
+  describe "GET /static_pages/help" do
+    it "should have the content 'Help'" do
+      visit '/static_pages/help'
+      page.should have_content('Help')
+    end
+    
+    it "should have the h1 'Help'" do
+      visit '/static_pages/help'
+      page.should have_selector('h1', :text => 'Help')
+    end
+    
+    it "should have the right title" do
+      visit '/static_pages/help'
+      page.should have_selector('title',
+                        :text => "#{base_title} | Help")
+    end
+  end
+  
+  describe "About page" do
+    it "should have the content 'About Us'" do
+      visit '/static_pages/about'
+      page.should have_content('About Us')
+    end
+    
+    it "should have the h1 'About Us'" do
+      visit '/static_pages/about'
+      page.should have_selector('h1', :text => 'About Us')
+    end
+    
+    it "should have the right title" do
+      visit '/static_pages/about'
+      page.should have_selector('title',
+                        :text => "#{base_title} | About")
+    end
+  end
+
+  describe "Contact page" do
+
+    it "should have the h1 'Contact'" do
+      visit '/static_pages/contact'
+      page.should have_selector('h1', :text => 'Contact')
+    end
+
+    it "should have the title 'Contact'" do
+      visit '/static_pages/contact'
+      page.should have_selector('title', :text => "#{base_title} | Contact")
+    end
+  end
+
+end
+

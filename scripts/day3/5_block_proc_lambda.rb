@@ -58,3 +58,8 @@ puts('---Block #2---' )
 c = proc{|x,y,z| x = y*z; puts(x) }
 c.call(2,5,10,100)        # This is an error in Ruby 1.8
                           # Not an error in Ruby 1.9
+
+def aMethod
+    yield
+end
+aMethod{ puts( "Good morning" ) }
